@@ -1,0 +1,403 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Container */
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: slideInUp 0.3s ease-out;
+  position: relative;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Modal Sizes */
+.modal-small {
+  width: 400px;
+  max-width: 90vw;
+}
+
+.modal-medium {
+  width: 600px;
+  max-width: 90vw;
+}
+
+.modal-large {
+  width: 800px;
+  max-width: 90vw;
+}
+
+.modal-xl {
+  width: 1000px;
+  max-width: 90vw;
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.modal-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  flex: 1;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--muted-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.modal-close:hover {
+  background: var(--bg);
+  color: var(--text);
+  transform: scale(1.1);
+}
+
+/* Modal Content */
+.modal-content {
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: calc(90vh - 120px);
+}
+
+/* Modal Types */
+.modal-success .modal-header {
+  border-bottom-color: var(--success);
+}
+
+.modal-success .modal-icon {
+  color: var(--success);
+}
+
+.modal-error .modal-header {
+  border-bottom-color: var(--danger);
+}
+
+.modal-error .modal-icon {
+  color: var(--danger);
+}
+
+.modal-warning .modal-header {
+  border-bottom-color: var(--warning);
+}
+
+.modal-warning .modal-icon {
+  color: var(--warning);
+}
+
+.modal-info .modal-header {
+  border-bottom-color: var(--primary);
+}
+
+.modal-info .modal-icon {
+  color: var(--primary);
+}
+
+/* Confirm Modal */
+.confirm-modal {
+  text-align: center;
+}
+
+.confirm-message {
+  margin: 0 0 2rem 0;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.confirm-actions button {
+  min-width: 120px;
+}
+
+/* Alert Modal */
+.alert-modal {
+  text-align: center;
+}
+
+.alert-message {
+  margin: 0 0 2rem 0;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.alert-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.alert-actions button {
+  min-width: 120px;
+}
+
+/* Form Modal */
+.form-modal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.form-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  flex-wrap: wrap;
+}
+
+.form-actions button {
+  min-width: 120px;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .modal {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .modal-header {
+  background: var(--bg);
+  border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .form-actions {
+  background: var(--bg);
+  border-top-color: var(--border);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .modal {
+    width: 100% !important;
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: var(--radius-lg);
+  }
+  
+  .modal-header {
+    padding: 1rem 1.5rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+  }
+  
+  .form-content {
+    padding: 1.5rem;
+  }
+  
+  .form-actions {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+  }
+  
+  .form-actions button {
+    width: 100%;
+  }
+  
+  .confirm-actions,
+  .alert-actions {
+    flex-direction: column;
+  }
+  
+  .confirm-actions button,
+  .alert-actions button {
+    width: 100%;
+  }
+  
+  .modal-title {
+    font-size: 1.1rem;
+  }
+  
+  .modal-close {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Focus management */
+.modal:focus {
+  outline: none;
+}
+
+.modal:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Accessibility */
+.modal[role="dialog"] {
+  outline: none;
+}
+
+/* Animation variants */
+.modal.modal-slide-left {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.modal.modal-slide-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.modal.modal-zoom {
+  animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Exit animations */
+.modal.modal-exit {
+  animation: slideOutUp 0.3s ease-in;
+}
+
+@keyframes slideOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .modal {
+    border-width: 2px;
+  }
+  
+  .modal-header {
+    border-bottom-width: 2px;
+  }
+  
+  .form-actions {
+    border-top-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay,
+  .modal {
+    animation: none;
+  }
+  
+  .modal-close:hover {
+    transform: none;
+  }
+}
+

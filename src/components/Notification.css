@@ -1,0 +1,295 @@
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  pointer-events: none;
+}
+
+.notification {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.5rem;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+  animation: slideInRight 0.3s ease-out;
+  backdrop-filter: blur(10px);
+  min-width: 300px;
+}
+
+.notification-exit {
+  animation: slideOutRight 0.3s ease-in;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.notification-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-message {
+  margin: 0;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  color: var(--muted-text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.notification-close:hover {
+  background: var(--bg);
+  color: var(--text);
+  transform: scale(1.1);
+}
+
+.notification-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--primary);
+  animation: progressShrink 5s linear;
+}
+
+@keyframes progressShrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Notification types */
+.notification-success {
+  border-left: 4px solid var(--success);
+}
+
+.notification-success .notification-icon {
+  color: var(--success);
+}
+
+.notification-success .notification-progress {
+  background: var(--success);
+}
+
+.notification-error {
+  border-left: 4px solid var(--danger);
+}
+
+.notification-error .notification-icon {
+  color: var(--danger);
+}
+
+.notification-error .notification-progress {
+  background: var(--danger);
+}
+
+.notification-warning {
+  border-left: 4px solid var(--warning);
+}
+
+.notification-warning .notification-icon {
+  color: var(--warning);
+}
+
+.notification-warning .notification-progress {
+  background: var(--warning);
+}
+
+.notification-info {
+  border-left: 4px solid var(--primary);
+}
+
+.notification-info .notification-icon {
+  color: var(--primary);
+}
+
+.notification-info .notification-progress {
+  background: var(--primary);
+}
+
+/* Hover effects */
+.notification:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.notification:hover .notification-progress {
+  animation-play-state: paused;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .notification {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .notification-icon {
+  background: var(--bg);
+}
+
+[data-theme="dark"] .notification-close:hover {
+  background: var(--bg);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .notification-container {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+  
+  .notification {
+    min-width: auto;
+    padding: 1rem;
+  }
+  
+  .notification-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+  
+  .notification-message {
+    font-size: 0.9rem;
+  }
+  
+  .notification-close {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+  }
+}
+
+/* Stacking animations */
+.notification:nth-child(1) { animation-delay: 0s; }
+.notification:nth-child(2) { animation-delay: 0.1s; }
+.notification:nth-child(3) { animation-delay: 0.2s; }
+.notification:nth-child(4) { animation-delay: 0.3s; }
+.notification:nth-child(5) { animation-delay: 0.4s; }
+
+/* Custom progress durations */
+.notification[data-duration="3000"] .notification-progress {
+  animation-duration: 3s;
+}
+
+.notification[data-duration="7000"] .notification-progress {
+  animation-duration: 7s;
+}
+
+.notification[data-duration="10000"] .notification-progress {
+  animation-duration: 10s;
+}
+
+/* Pause animation on hover */
+.notification:hover .notification-progress {
+  animation-play-state: paused;
+}
+
+/* Accessibility */
+.notification:focus-within {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.notification-close:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .notification {
+    border-width: 2px;
+  }
+  
+  .notification-progress {
+    height: 4px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .notification {
+    animation: none;
+  }
+  
+  .notification-exit {
+    animation: none;
+  }
+  
+  .notification-progress {
+    animation: none;
+  }
+  
+  .notification:hover {
+    transform: none;
+  }
+  
+  .notification-close:hover {
+    transform: none;
+  }
+}
+
