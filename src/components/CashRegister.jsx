@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CashRegister.css';
 import BarcodeScanner from './BarcodeScanner';
+import PrintReceipt from './PrintReceipt';
 
 const CashRegister = ({ user, onLogout, onViewChange }) => {
   const [products, setProducts] = useState([]);
@@ -10,6 +11,8 @@ const CashRegister = ({ user, onLogout, onViewChange }) => {
   const [paymentMethod, setPaymentMethod] = useState('cash');
   const [searchTerm, setSearchTerm] = useState('');
   const [showBarcodeScanner, setShowBarcodeScanner] = useState(false);
+  const [showPrintReceipt, setShowPrintReceipt] = useState(false);
+  const [lastSale, setLastSale] = useState(null);
 
   useEffect(() => {
     loadData();
@@ -123,7 +126,9 @@ const CashRegister = ({ user, onLogout, onViewChange }) => {
     saveSale(sale);
     updateInventory();
 
-    alert(`Satış uğurla tamamlandı! Ümumi məbləğ: ${getTotal().toFixed(2)} AZN`);
+    // Show success message and offer to print receipt
+    setLastSale(sale);
+    setShowPrintReceipt(true);
     
     // Reset form
     setCart([]);
@@ -305,6 +310,14 @@ const CashRegister = ({ user, onLogout, onViewChange }) => {
         <BarcodeScanner
           onScan={handleBarcodeScan}
           onClose={() => setShowBarcodeScanner(false)}
+        />
+      )}
+
+      {/* Print Receipt Modal */}
+      {showPrintReceipt && lastSale && (
+        <PrintReceipt
+          sale={lastSale}
+          onClose={() => setShowPrintReceipt(false)}
         />
       )}
     </div>

@@ -14,6 +14,7 @@ import InventoryCount from './components/InventoryCount';
 import Finance from './components/Finance';
 import Settings from './components/Settings';
 import DataManager from './components/DataManager';
+import CustomerManagement from './components/CustomerManagement';
 import { NotificationContainer, useNotifications } from './components/Notification';
 
 function App() {
@@ -86,6 +87,8 @@ function App() {
         return <Settings user={currentUser} onBack={() => setCurrentView('dashboard')} isDarkMode={isDarkMode} />;
       case 'data-manager':
         return <DataManager user={currentUser} onBack={() => setCurrentView('dashboard')} isDarkMode={isDarkMode} />;
+      case 'customers':
+        return <CustomerManagement user={currentUser} onBack={() => setCurrentView('dashboard')} isDarkMode={isDarkMode} />;
       default:
         return <Login onLogin={handleLogin} isDarkMode={isDarkMode} onToggleDarkMode={toggleDarkMode} />;
     }

@@ -162,6 +162,12 @@ const AdminPanel = ({ user, onLogout, onViewChange, isDarkMode, onToggleDarkMode
             <h3>Məlumat İdarəetməsi</h3>
             <p>Backup, bərpa və məlumat ixrac/idxal</p>
           </div>
+
+          <div className="feature-card" onClick={() => handleViewChange('customers')}>
+            <div className="feature-icon">👥</div>
+            <h3>Müştəri İdarəetməsi</h3>
+            <p>Müştəri məlumatları və satış tarixçəsi</p>
+          </div>
         </div>
       </div>
     </div>
