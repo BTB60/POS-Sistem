@@ -1,181 +1,395 @@
-.reports { 
-  background: var(--bg); 
-  min-height: 100vh; 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+.reports-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: white;
 }
 
-.reports-header { 
-  background: linear-gradient(135deg, var(--header-grad-start) 0%, var(--header-grad-end) 100%); 
-  color: #fff; 
-  padding: 1.5rem 2rem; 
-  box-shadow: var(--shadow);
+.reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.header-content { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  max-width: 1200px; 
-  margin: 0 auto; 
+.reports-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.header-left { 
-  display: flex; 
-  align-items: center; 
-  gap: 1rem; 
+.reports-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
-.back-btn { 
-  background: rgba(255,255,255,0.2); 
-  border: 1px solid rgba(255,255,255,0.3); 
-  color: #fff; 
-  padding: 0.75rem 1.5rem; 
-  border-radius: 8px; 
-  cursor: pointer; 
-  transition: all 0.2s ease;
+.period-select {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.back-btn:hover {
-  background: rgba(255,255,255,0.3);
-  transform: translateY(-1px);
-}
-
-.reports-content { 
-  max-width: 1200px; 
-  margin: 0 auto; 
-  padding: 2rem; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 1.5rem; 
-}
-
-.reports-controls { 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 1rem; 
-  background: var(--surface); 
-  padding: 1.5rem; 
-  border-radius: 12px; 
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
-
-.control-group { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 0.5rem; 
-}
-
-.control-group select, .control-group input { 
-  padding: 0.75rem; 
-  border: 2px solid var(--border); 
-  border-radius: 8px; 
-  background: var(--surface); 
-  color: var(--text);
-  transition: all 0.2s ease;
-}
-
-.control-group select:focus, .control-group input:focus {
+.period-select:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-}
-
-.custom-date-controls { 
-  display: flex; 
-  gap: 1rem; 
-}
-
-.report-container { 
-  background: var(--surface); 
-  border-radius: 12px; 
-  padding: 1.5rem; 
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
-
-.report-summary { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 1.5rem; 
-  margin-bottom: 1.5rem; 
-}
-
-.summary-card { 
-  background: var(--bg); 
-  border-radius: 10px; 
-  padding: 1.5rem; 
-  text-align: center; 
-  border: 1px solid var(--border);
-  transition: all 0.2s ease;
-}
-
-.summary-card:hover {
+  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
 }
 
-.report-details { 
-  display: grid; 
-  grid-template-columns: 1fr; 
-  gap: 1.5rem; 
+.period-select option {
+  background: #333;
+  color: white;
 }
 
-.detail-section { 
-  background: var(--bg); 
-  border-radius: 10px; 
-  padding: 1.5rem; 
-  border: 1px solid var(--border);
+.export-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
 }
 
-.payment-methods, .top-products, .recent-sales, .category-stats, .low-stock-list, .employee-performance { 
-  display: grid; 
-  gap: 0.75rem; 
+.export-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
 }
 
-.payment-method, .top-product, .sale-item, .category-stat, .low-stock-item, .employee-stat { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  background: var(--surface); 
-  border: 1px solid var(--border); 
-  border-radius: 8px; 
-  padding: 1rem; 
-  color: var(--text);
-  transition: all 0.2s ease;
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
-.payment-method:hover, .top-product:hover, .sale-item:hover, .category-stat:hover, .low-stock-item:hover, .employee-stat:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow);
+.stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.employee-info { 
-  display: flex; 
-  gap: 0.5rem; 
-  align-items: baseline; 
+.stat-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.employee-name { 
-  font-weight: 600; 
-  color: var(--text);
+.stat-icon {
+  font-size: 3rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
 }
 
-.employee-metrics { 
-  display: flex; 
-  gap: 1rem; 
+.stat-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  opacity: 0.9;
 }
 
+.stat-value {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.reports-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 25px;
+}
+
+.report-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.report-section:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.report-section h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.top-products {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.product-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.rank {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffd700;
+  min-width: 30px;
+}
+
+.name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.quantity {
+  font-weight: 600;
+  color: #4ecdc4;
+}
+
+.low-stock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.stock-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.stock-item .name {
+  font-weight: 500;
+}
+
+.stock-item .quantity {
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.stock-item .quantity.warning {
+  background: rgba(255, 193, 7, 0.3);
+  color: #ffc107;
+}
+
+.stock-item .quantity.critical {
+  background: rgba(220, 53, 69, 0.3);
+  color: #dc3545;
+}
+
+.customer-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.customer-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.customer-stat:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.customer-stat span {
+  font-weight: 500;
+}
+
+.customer-stat strong {
+  font-size: 1.1rem;
+  color: #4ecdc4;
+}
+
+.recent-sales {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sale-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.sale-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sale-item .date {
+  font-weight: 500;
+  color: #ffd700;
+}
+
+.sale-item .items {
+  font-weight: 500;
+  color: #4ecdc4;
+}
+
+.sale-item .total {
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .reports-content {
-    padding: 1rem;
+  .reports-container {
+    padding: 15px;
   }
-  
+
+  .reports-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .reports-header h1 {
+    font-size: 2rem;
+  }
+
   .reports-controls {
     flex-direction: column;
+    width: 100%;
   }
-  
-  .custom-date-controls {
+
+  .period-select,
+  .export-btn {
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
     flex-direction: column;
+    text-align: center;
+  }
+
+  .stat-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  .reports-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .sale-item {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
 }
+
+@media (max-width: 480px) {
+  .reports-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .report-section h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-card,
+.report-section {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+.report-section:nth-child(1) { animation-delay: 0.5s; }
+.report-section:nth-child(2) { animation-delay: 0.6s; }
+.report-section:nth-child(3) { animation-delay: 0.7s; }
+.report-section:nth-child(4) { animation-delay: 0.8s; }
